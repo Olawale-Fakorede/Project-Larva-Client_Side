@@ -1,7 +1,16 @@
+import { useNavigate } from 'react-router-dom';
 import { MdOutlineEmail } from "react-icons/md";
 import { IoIosLock } from "react-icons/io";
 
 const Login = () => {
+    
+    const navigate = useNavigate();
+
+    const handleLogin = () => {
+        // Your login logic here
+        navigate('/attendance');
+    };
+
   return (
     <div className="h-full md:h-full lg:h-full w-full md:w-full lg:w-full flex md:flex lg:grid lg:grid-cols-2 bg-white">
         <div className='w-3/4 h-fit md:w-fit lg:h-fit bg-white justify-center m-12 md:m-20 lg:m-28 rounded-lg'>
@@ -24,7 +33,9 @@ const Login = () => {
                 </p>
             </div>
 
-            <div className="h-5 w-full px-2.5 py-5 mt-8 md:mt-12 bg-[#f39b3b] rounded-[10px] justify-center items-center gap-2.5 inline-flex">
+            <div className="h-5 w-full px-2.5 py-5 mt-8 md:mt-12 bg-[#f39b3b] rounded-[10px] justify-center items-center gap-2.5 inline-flex"
+              onClick={handleLogin}  
+            >
                 <p className="text-white text-lg md:text-xl font-semibold font-['Inter']">Log In as Tutor</p>
             </div>
 
