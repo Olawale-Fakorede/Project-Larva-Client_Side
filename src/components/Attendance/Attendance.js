@@ -1,14 +1,27 @@
 
+import { useNavigate } from 'react-router-dom';
 import { IoMdSearch } from "react-icons/io";
 import { LuListFilter } from "react-icons/lu";
 import { FaCaretDown } from "react-icons/fa";
+import { MdLogout } from "react-icons/md";
 
 const Attendance = () => {
+  const navigate = useNavigate();
 
+
+  const handleAttendance = () => {
+    // Your login logic here
+    navigate('/attendance');
+};
+
+  const handleRegister = () => {
+      // Your login logic here
+      navigate('/register');
+  };
       
   return (
-    <div>
-        <div className="w-[1400px] h-[781px] relative bg-[#faf9f9]">
+    <div className='w-full h-full'>
+        <div className="w-[375px] lg:w-[1300px] h-full lg:h-[781px] relative bg-black lg:bg-[#faf9f9]">
           {/* Head */}
   <div className="w-[1103px] pl-6 pr-9 py-4 left-[247px] top-[1px] absolute bg-white border-b border-[#e6e6e6] justify-between items-center inline-flex">
     <div className="text-[#111111] text-xl font-semibold font-['Inter']">School Attendance</div>
@@ -22,16 +35,16 @@ const Attendance = () => {
   </div>
 
       {/* ASIDE */}
-  <div className="pl-11 pr-16 pt-[37px] pb-[62.62px] left-0 top-0 absolute bg-white border-r border-[#e6e6e6] flex-col justify-start items-center inline-flex">
+  <aside className="pl-11 pr-16 pt-[37px] pb-[62.62px] left-0 top-0 absolute bg-white border-r border-[#e6e6e6] flex-col justify-start items-center inline-flex">
     <div className="self-stretch h-[681.38px] flex-col justify-start items-start gap-[287px] inline-flex">
       <div className="h-[375.38px] flex-col justify-start items-start gap-[142px] flex">
         <img className="w-[104px] h-[37.37px]" src="/Images/Logo.png" alt="Logo"/>
         <div className="self-stretch h-[196px] flex-col justify-start items-start gap-10 flex">
           <div className="self-stretch justify-center items-center gap-2.5 inline-flex">
-            <div className="text-[#222222] hover:text-[#cc781d] text-base font-semibold font-['Inter']">Mark Attendance</div>
+            <div className="text-[#222222] hover:text-[#cc781d] text-base font-semibold font-['Inter']" onClick={handleAttendance}>Mark Attendance</div>
           </div>
           <div className="self-stretch justify-center items-center gap-2.5 inline-flex">
-            <div className="text-[#222222] hover:text-[#cc781d] text-base font-semibold font-['Inter']">Register Students</div>
+            <div className="text-[#222222] hover:text-[#cc781d] text-base font-semibold font-['Inter']" onClick={handleRegister}>Register Students</div>
           </div>
           <div className="justify-center items-center gap-2.5 inline-flex">
             <div className="text-[#222222] hover:text-[#cc781d] text-base font-semibold font-['Inter']">Student List</div>
@@ -43,11 +56,14 @@ const Attendance = () => {
       </div>
       <div className="justify-start items-center gap-4 inline-flex">
         <div className="justify-center items-center gap-2.5 flex">
-          <div className="text-[#222222] text-base font-semibold font-['Inter']">Log Out</div>
+          <div className="text-[#222222] text-base font-semibold font-['Inter'] inline-flex">
+            <MdLogout className="mr-4 mt-1" />
+            Log Out
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </aside>
 
       {/* Serch and Date aspect line */}
   <div className="w-[1103px] h-[215px] pl-[30px] pr-[37px] py-5 left-[247px] top-[82px] absolute border-b border-[#e6e6e6] flex-col justify-start items-start gap-[29px] inline-flex">
@@ -69,10 +85,12 @@ const Attendance = () => {
             <p className="w-[109px] text-[#2c2c2c] text-base font-semibold font-['Inter']">Date Selector</p>
             <FaCaretDown className="text-2xl text-[#cc781d] font-bold"/>
           </div>
+          
           <div className="px-3.5 py-[18px] bg-white rounded shadow justify-center items-center gap-16 flex">
             <p className="text-[#2c2c2c] text-base font-semibold font-['Inter']">Select Course</p>
             <FaCaretDown className="text-2xl text-[#cc781d] font-bold"/>
           </div>
+
           <div className="px-3.5 py-[18px] bg-white rounded shadow justify-center items-center gap-16 flex">
             <p className="text-[#2c2c2c] text-base font-semibold font-['Inter']">Select Cohort</p>
             <FaCaretDown className="text-2xl text-[#cc781d] font-bold"/>
@@ -85,6 +103,8 @@ const Attendance = () => {
       {/* </div> */}
     </div>
   </div>
+            
+            
 
       {/* Hero aspect with pics */}
   {/* <div className="h-[398.70px] left-[271px] top-[340px] absolute flex-col justify-start items-start gap-[42px] inline-flex">
