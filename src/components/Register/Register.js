@@ -16,6 +16,17 @@ const Register = () => {
       // Your login logic here
       navigate('/register');
   };
+
+  const handleStudent = () => {
+    // Your login logic here
+    navigate('/studentlist');
+};
+
+const handleLogOut = () => {
+    // Your login logic here
+    navigate('/');
+  };
+
   return (
     <div>
         <div className="w-[1300px] h-[781px] relative bg-[#faf9f9]">
@@ -36,21 +47,21 @@ const Register = () => {
                 <img className="w-[104px] h-[37.37px]" src="Images/Logo.png" alt='Logo' />
                 <div className="self-stretch h-[196px] flex-col justify-start items-start gap-10 flex">
                     <div className="self-stretch justify-center items-center gap-2.5 inline-flex">
-                        <div className="text-[#222222] text-base font-semibold font-['Inter']" onClick={handleAttendance}>Mark Attendance</div>
+                        <div className="text-[#222222] text-base font-semibold font-['Inter'] cursor-pointer" onClick={handleAttendance}>Mark Attendance</div>
                     </div>
                     <div className="self-stretch justify-center items-center gap-2.5 inline-flex">
-                        <div className="text-[#cc781d] text-base font-semibold font-['Inter']" onClick={handleRegister}>Register Students</div>
+                        <div className="text-[#cc781d] text-base font-semibold font-['Inter'] cursor-pointer" onClick={handleRegister}>Register Students</div>
                     </div>
                     <div className="justify-center items-center gap-2.5 inline-flex">
-                        <div className="text-[#222222] text-base font-semibold font-['Inter']">Students List</div>
+                        <div className="text-[#222222] text-base font-semibold font-['Inter'] cursor-pointer" onClick={handleStudent}>Students List</div>
                     </div>
                     <div className="justify-center items-center gap-2.5 inline-flex">
-                        <div className="text-[#222222] text-base font-semibold font-['Inter']">Settings</div>
+                        <div className="text-[#222222] text-base font-semibold font-['Inter'] cursor-pointer">Settings</div>
                     </div>
                 </div>
             </div>
             <div className="justify-start items-center gap-4 inline-flex">
-                <div className="justify-center items-center gap-2.5 flex">
+                <div className="justify-center items-center gap-2.5 flex" onClick={handleLogOut}>
                     <MdLogout className="mr-4 mt-1" />
                     <div className="text-[#222222] text-base font-semibold font-['Inter']">Log Out</div>
                 </div>
@@ -60,7 +71,7 @@ const Register = () => {
     
     <div className="h-[62px] pl-[30px] pr-[37px] py-5 left-[247px] top-[82px] absolute border-b border-[#e6e6e6] flex-col justify-start items-start gap-[29px] inline-flex">
         <div className="self-stretch h-[22px] flex-col justify-start items-center gap-[18px] flex">
-            <p className="self-stretch text-center text-[#1a1a1a] text-lg font-semibold font-['Inter']">Register Students</p>
+            <p className="self-stretch text-center text-[#1a1a1a] text-lg font-semibold font-['Inter'] ml-96">Register Students</p>
         </div>
     </div>
 
@@ -76,22 +87,22 @@ const Register = () => {
             </div>
             <div className="h-[262px] flex-col justify-start items-start gap-3.5 flex">
                 <div className="self-stretch pl-[17px] pr-2.5 py-[15px] bg-[#f8f8f8] rounded-[10px] border border-[#d3d3d3] justify-start items-center gap-3 inline-flex">
-                    <input className="h-7 w-96 text-[#afafaf] text-base font-medium font-['Inter'] py-[15px] focus:border-t-slate-500" 
+                    <input className="h-7 w-96 text-[#afafaf] text-base font-medium font-['Inter'] py-[15px] focus:border-t-slate-500 outline-none" 
                     placeholder='Name'
                     />
                 </div>
                 <div className="self-stretch pl-[17px] pr-2.5 py-[15px] bg-[#f8f8f8] rounded-[10px] border border-[#d3d3d3] justify-start items-center gap-3 inline-flex">
-                <input className="h-7 w-96 text-[#afafaf] text-base font-medium font-['Inter'] py-[15px] focus:border-t-slate-500" 
+                <input className="h-7 w-96 text-[#afafaf] text-base font-medium font-['Inter'] py-[15px] focus:border-t-slate-500 outline-none" 
                     placeholder='Student Number'
                     />
                 </div>
                 <div className="self-stretch pl-[17px] pr-2.5 py-[15px] bg-[#f8f8f8] rounded-[10px] border border-[#d3d3d3] justify-start items-center gap-3 inline-flex">
-                <input className="h-7 w-96 text-[#afafaf] text-base font-medium font-['Inter'] py-[15px] focus:border-t-slate-500" 
+                <input className="h-7 w-96 text-[#afafaf] text-base font-medium font-['Inter'] py-[15px] focus:border-t-slate-500 outline-none" 
                     placeholder='Course'
                     />
                 </div>
                 <div className="self-stretch pl-[17px] pr-2.5 py-[15px] bg-[#f8f8f8] rounded-[10px] border border-[#d3d3d3] justify-start items-center gap-3 inline-flex">
-                <input className="h-7 w-96 text-[#afafaf] text-base font-medium font-['Inter'] py-[15px] focus:border-t-slate-500" 
+                <input className="h-7 w-96 text-[#afafaf] text-base font-medium font-['Inter'] py-[15px] focus:border-t-slate-500 outline-none" 
                     placeholder='Cohort'
                     />
                 </div>

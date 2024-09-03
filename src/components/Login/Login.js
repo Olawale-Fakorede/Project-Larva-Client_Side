@@ -22,25 +22,31 @@ const Login = () => {
                 <MdOutlineEmail className="text-[#afafaf]"/>
                 <p className="text-[#afafaf] text-base font-medium font-['Inter']">
                     Email 
-                    <input type="text" placeholder="Enter Email Address" className="h-3 md:h-5 w-44 md:w-96 lg:w-fit ml-1 pl-3 text-sm placeholder:text-xs bg-[#f8f8f8] focus:border-white"/>
+                    <input className="h-3 md:h-5 w-44 md:w-96 lg:w-fit ml-1 pl-3 text-sm placeholder:text-xs bg-[#f8f8f8] outline-none"
+                    type="text" 
+                    placeholder="Enter Email Address"
+                    />
                 </p>
             </div>
             <div className="h-5 w-full mt-7 md:mt-9 pl-2 pr-2.5 py-[18px] bg-[#f8f8f8] rounded-[10px] border border-[#d3d3d3] justify-start items-center gap-3 inline-flex">
                 <IoIosLock className="text-[#afafaf]"/>
                 <p className="text-[#afafaf] text-base font-medium font-['Inter']">
                     Password
-                    <input type="text" placeholder="Enter Password" className="h-5 w-36 md:w-96 lg:w-fit ml-1 pl-3 text-sm placeholder:text-xs bg-[#f8f8f8] focus:border-white"/>
+                    <input className="h-5 w-36 md:w-96 lg:w-fit ml-1 pl-3 text-sm placeholder:text-xs bg-[#f8f8f8] focus:border-white outline-none"
+                    type="text" 
+                    placeholder="Enter Password"
+                    />
                 </p>
             </div>
 
             <div className="h-5 w-full px-2.5 py-5 mt-8 md:mt-12 bg-[#f39b3b] rounded-[10px] justify-center items-center gap-2.5 inline-flex"
               onClick={handleLogin}  
             >
-                <p className="text-white text-lg md:text-xl font-semibold font-['Inter']">Log In as Tutor</p>
+                <p className="text-white text-lg md:text-xl font-semibold font-['Inter'] cursor-pointer">Log In as Tutor</p>
             </div>
 
             <div className="h-5 w-full px-2.5 py-5 mt-5 md:mt-7 bg-[#1e1205] rounded-[10px] justify-center items-center gap-2.5 inline-flex">
-                <p className="text-white text-lg md:text-xl font-semibold font-['Inter']">Log In as Super Admin</p>
+                <p className="text-white text-lg md:text-xl font-semibold font-['Inter'] cursor-pointer">Log In as Super Admin</p>
             </div>
         </div>
 
