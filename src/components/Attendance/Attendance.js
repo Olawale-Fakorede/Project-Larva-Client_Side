@@ -6,6 +6,9 @@ import { IoMdSearch } from "react-icons/io";
 import { LuListFilter } from "react-icons/lu";
 import { FaCaretDown } from "react-icons/fa";
 import { MdLogout } from "react-icons/md";
+import Course from './Course';
+import Cohort from './Cohort';
+import Bulkaction from './Bulkaction';
 
 const Attendance = () => {
 
@@ -37,6 +40,14 @@ const handleSetting = () => {
 const handleLogOut = () => {
   // Your login logic here
   navigate('/');
+};
+
+const [selectedComponent, setSelectedComponent] = useState(null);
+
+const handleComponentClick = (component) => {
+  setSelectedComponent(component   
+=== selectedComponent ? null : component);
+
 };
       
   return (
@@ -114,16 +125,22 @@ const handleLogOut = () => {
             
           </div>
           
-          <div className="px-3.5 py-[18px] bg-white rounded shadow justify-center items-center gap-16 flex">
+          <div className="px-3.5 py-[18px] bg-white rounded shadow justify-center items-center gap-16 flex"
+            onClick={() => handleComponentClick("course")}
+          >
             <p className="text-[#2c2c2c] text-base font-semibold font-['Inter']">Select Course</p>
             <FaCaretDown className="text-2xl text-[#cc781d] font-bold"/>
           </div>
 
-          <div className="px-3.5 py-[18px] bg-white rounded shadow justify-center items-center gap-16 flex">
+          <div className="px-3.5 py-[18px] bg-white rounded shadow justify-center items-center gap-16 flex"
+            onClick={() => handleComponentClick("cohort")}
+          >
             <p className="text-[#2c2c2c] text-base font-semibold font-['Inter']">Select Cohort</p>
             <FaCaretDown className="text-2xl text-[#cc781d] font-bold"/>
           </div>
-          <div className="px-3.5 py-[18px] bg-white rounded shadow justify-center items-center gap-16 flex">
+          <div className="px-3.5 py-[18px] bg-white rounded shadow justify-center items-center gap-16 flex"
+            onClick={() => handleComponentClick("bulkaction")}
+          >
             <p className="text-[#2c2c2c] text-base font-semibold font-['Inter']">Bulk Action</p>
             <FaCaretDown className="text-2xl text-[#cc781d] font-bold"/>
           </div>
@@ -139,6 +156,13 @@ const handleLogOut = () => {
                 />
               )}
         </span>
+        
+        {selectedComponent === "course" && <Course />}
+        {selectedComponent === "cohort" && <Cohort />}
+        {selectedComponent === "bulkaction" && <Bulkaction />}
+        {/* <Course />
+        <Cohort />
+        <Bulkaction /> */}
   </div>
 </div>
   )
