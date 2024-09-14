@@ -1,4 +1,6 @@
 
+import { useState } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { MdLogout } from "react-icons/md";
 
@@ -27,9 +29,41 @@ const handleLogOut = () => {
     navigate('/');
   };
 
+
+  const [valueForm, setValueForm] = useState({
+    name: '',
+    studentNumber: '',
+    course: '',
+    cohort: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value} = e.target
+    setValueForm({
+      ...valueForm,
+      [name]: value
+    })
+};
+
+
+const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    // Assuming valueForm is already defined and contains the data to post
+  
+    try {
+      const response = await axios.post('http://localhost:6040/api/students', valueForm);
+  
+      // Handle successful response (e.g., display success message, redirect)
+      console.log('Data successfully posted:', response.data); // Example usage
+    } catch (error) {
+      // Handle errors gracefully (e.g., display error message)
+      console.error('mError posting data:', error);
+    }
+  };
+
   return (
-    <div>
-        <div className="w-[1300px] h-[781px] relative bg-[#faf9f9]">
+        <div className="w-[1300px] h-fit relative bg-[#faf9f9]">
             <div className="w-[1103px] pl-6 pr-9 py-4 left-[247px] top-[1px] absolute bg-white border-b border-[#e6e6e6] justify-between items-center inline-flex">
                 <div className="text-[#111111] text-xl font-semibold font-['Inter']">School Attendance</div>
                 <div className="justify-start items-center gap-[31px] flex">
@@ -42,7 +76,7 @@ const handleLogOut = () => {
             </div>
 
     <aside className="pl-11 pr-16 pt-[37px] pb-[62.62px] left-0 top-0 absolute bg-white border-r border-[#e6e6e6] flex-col justify-start items-center inline-flex">
-        <div className="self-stretch h-[681.38px] flex-col justify-start items-start gap-[287px] inline-flex">
+        <div className="self-stretch h-[581.38px] flex-col justify-start items-start gap-[287px] inline-flex">
             <div className="self-stretch h-[375.38px] flex-col justify-start items-start gap-[142px] flex">
                 <img className="w-[104px] h-[37.37px]" src="Images/Logo.png" alt='Logo' />
                 <div className="self-stretch h-[196px] flex-col justify-start items-start gap-10 flex">
@@ -76,6 +110,7 @@ const handleLogOut = () => {
     </div>
 
     <div className="h-[555px] left-[584px] top-[166px] absolute flex-col justify-start items-center gap-12 inline-flex">
+        <form >
         <div className="self-stretch h-[449px] flex-col justify-start items-center gap-[39px] flex">
             <div className="h-[148px] flex-col justify-start items-center gap-[18px] flex">
                 <div className="w-[108px] h-[108px] relative">
@@ -85,35 +120,55 @@ const handleLogOut = () => {
                 </div>
                 <div className="self-stretch text-center text-[#cc781d] text-lg font-semibold font-['Inter']">Add Photo</div>
             </div>
-            <div className="h-[262px] flex-col justify-start items-start gap-3.5 flex">
+            <div className="h-[262px] flex-col justify-start items-start gap-3.5 flex pb-10">
                 <div className="self-stretch pl-[17px] pr-2.5 py-[15px] bg-[#f8f8f8] rounded-[10px] border border-[#d3d3d3] justify-start items-center gap-3 inline-flex">
-                    <input className="h-7 w-96 text-[#afafaf] text-base font-medium font-['Inter'] py-[15px] focus:border-t-slate-500 outline-none" 
-                    placeholder='Name'
+                    <input className="h-7 w-96 text-[#1a1919] text-base font-medium font-['Inter'] py-[15px] focus:border-t-slate-500 outline-none" 
+                        placeholder='Name'
+                        type="text" 
+                        onChange={handleChange}
+                        name='name'
+                        value={valueForm.name} 
                     />
                 </div>
                 <div className="self-stretch pl-[17px] pr-2.5 py-[15px] bg-[#f8f8f8] rounded-[10px] border border-[#d3d3d3] justify-start items-center gap-3 inline-flex">
-                <input className="h-7 w-96 text-[#afafaf] text-base font-medium font-['Inter'] py-[15px] focus:border-t-slate-500 outline-none" 
-                    placeholder='Student Number'
+                <input className="h-7 w-96 text-[#1a1919] text-base font-medium font-['Inter'] py-[15px] focus:border-t-slate-500 outline-none" 
+                        placeholder='Student Number'
+                        type="text" 
+                        onChange={handleChange}
+                        name='studentNumber'
+                        value={valueForm.studentNumber} 
                     />
                 </div>
                 <div className="self-stretch pl-[17px] pr-2.5 py-[15px] bg-[#f8f8f8] rounded-[10px] border border-[#d3d3d3] justify-start items-center gap-3 inline-flex">
-                <input className="h-7 w-96 text-[#afafaf] text-base font-medium font-['Inter'] py-[15px] focus:border-t-slate-500 outline-none" 
+                <input className="h-7 w-96 text-[#1a1919] text-base font-medium font-['Inter'] py-[15px] focus:border-t-slate-500 outline-none" 
                     placeholder='Course'
-                    />
+                    type="text" 
+                    onChange={handleChange}
+                    name='course'
+                    value={valueForm.course} 
+                />
                 </div>
                 <div className="self-stretch pl-[17px] pr-2.5 py-[15px] bg-[#f8f8f8] rounded-[10px] border border-[#d3d3d3] justify-start items-center gap-3 inline-flex">
-                <input className="h-7 w-96 text-[#afafaf] text-base font-medium font-['Inter'] py-[15px] focus:border-t-slate-500 outline-none" 
+                <input className="h-7 w-96 text-[#1a1919] text-base font-medium font-['Inter'] py-[15px] focus:border-t-slate-500 outline-none" 
                     placeholder='Cohort'
-                    />
+                    type="text" 
+                    onChange={handleChange}
+                    name='cohort'
+                    value={valueForm.cohort} 
+                />
                 </div>
             </div>
         </div>
-        <div className="self-stretch px-2.5 py-[18px] bg-[#f39b3b] rounded-[10px] justify-center items-center gap-2.5 inline-flex">
-            <div className="text-white text-lg font-semibold font-['Inter']">Register Student</div>
-        </div>
+        <button className="mt-10 w-full self-stretch px-2.5 py-[15px] bg-[#f39b3b] rounded-[10px] justify-center items-center gap-2.5 inline-flex"
+        onSubmit={handleSubmit}
+        >
+            <p className="text-white text-lg font-semibold font-['Inter']">
+                Register Student
+            </p>
+        </button>
+        </form>
     </div>
 </div>
-    </div>
   )
 }
 

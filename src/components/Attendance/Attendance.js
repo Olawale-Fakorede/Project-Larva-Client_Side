@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import axios from "axios";
 import Calendar from 'react-calendar';
 import { useNavigate } from 'react-router-dom';
 import { IoMdSearch } from "react-icons/io";
@@ -45,8 +46,7 @@ const handleLogOut = () => {
 const [selectedComponent, setSelectedComponent] = useState(null);
 
 const handleComponentClick = (component) => {
-  setSelectedComponent(component   
-=== selectedComponent ? null : component);
+  setSelectedComponent(component   === selectedComponent ? null : component);
 
 };
       
@@ -66,32 +66,40 @@ const handleComponentClick = (component) => {
 
       {/* ASIDE */}
   <aside className="pl-11 pr-16 pt-[37px] pb-[62.62px] left-0 top-0 absolute bg-white border-r border-[#e6e6e6] flex-col justify-start items-center inline-flex">
-    <div className="self-stretch h-[681.38px] flex-col justify-start items-start gap-[287px] inline-flex">
+    <div className="self-stretch h-[681.38px] flex-col justify-start items-start gap-[100px] inline-flex">
         <img className="w-[104px] h-[37.37px]" src="/Images/Logo.png" alt="Logo"/>
 
-      <div className="h-[375.38px] flex-col justify-start items-start gap-[142px] lg:flex">
-        <div className="self-stretch h-[196px] flex-col justify-start items-start gap-10 flex lg:flex">
+      <div className="h-[275.38px] flex-col justify-start items-start gap-[102px] lg:flex">
+        <div className="self-stretch h-[176px] flex-col justify-start items-start gap-7 flex lg:flex">
           <div className="self-stretch justify-center items-center gap-2.5 inline-flex">
-            <div className="text-[#222222] hover:text-[#cc781d] text-base font-semibold font-['Inter'] cursor-pointer" onClick={handleAttendance}>Mark Attendance</div>
+            <p className="text-[#222222] hover:text-[#cc781d] text-base font-semibold font-['Inter'] cursor-pointer" onClick={handleAttendance}>
+              Mark Attendance
+            </p>
           </div>
           <div className="self-stretch justify-center items-center gap-2.5 inline-flex">
-            <div className="text-[#222222] hover:text-[#cc781d] text-base font-semibold font-['Inter'] cursor-pointer" onClick={handleRegister}>Register Students</div>
+            <p className="text-[#222222] hover:text-[#cc781d] text-base font-semibold font-['Inter'] cursor-pointer" onClick={handleRegister}>
+              Register Students
+            </p>
           </div>
           <div className="justify-center items-center gap-2.5 inline-flex">
-            <div className="text-[#222222] hover:text-[#cc781d] text-base font-semibold font-['Inter'] cursor-pointer" onClick={handleStudent}>Student List</div>
+            <p className="text-[#222222] hover:text-[#cc781d] text-base font-semibold font-['Inter'] cursor-pointer" onClick={handleStudent}>
+              Student List
+            </p>
           </div>
           <div className="justify-center items-center gap-2.5 inline-flex">
-            <div className="text-[#222222] hover:text-[#cc781d] text-base font-semibold font-['Inter'] cursor-pointer" onClick={handleSetting}>Settings</div>
+            <p className="text-[#222222] hover:text-[#cc781d] text-base font-semibold font-['Inter'] cursor-pointer" onClick={handleSetting}>
+              Settings
+            </p>
           </div>
 
           <div className="justify-start items-center lg:gap-4 inline-flex sm:mt-24">
-          <div className="justify-center items-center gap-2.5 flex">
-          <div className="text-[#222222] text-base font-semibold font-['Inter'] inline-flex"
+          <div className="justify-center items-center gap-2.5 flex"
           onClick={handleLogOut}
           >
-            <MdLogout className="mr-4 mt-1" />
-            Log Out
-          </div>
+          <p className="text-[#222222] text-base font-semibold font-['Inter'] inline-flex">
+              <MdLogout className="mr-4 mt-1" />
+              Log Out
+          </p>
         </div>
       </div>
         </div>
@@ -163,6 +171,10 @@ const handleComponentClick = (component) => {
         {/* <Course />
         <Cohort />
         <Bulkaction /> */}
+  </div>
+
+  <div className='h-fit w-[700px] bg-black '>
+
   </div>
 </div>
   )
