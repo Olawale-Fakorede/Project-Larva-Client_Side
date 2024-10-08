@@ -1,20 +1,20 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from "axios";
-import Calendar from 'react-calendar';
 import { useNavigate } from 'react-router-dom';
 import { IoMdSearch } from "react-icons/io";
 import { LuListFilter } from "react-icons/lu";
 import { FaCaretDown } from "react-icons/fa";
 import { MdLogout } from "react-icons/md";
+import Date from './Date';
 import Course from './Course';
 import Cohort from './Cohort';
 import Bulkaction from './Bulkaction';
+// import Getattendance from './Getattendance';
 
 const Attendance = () => {
 
-  const [date, setDate] = useState(new Date());
-  const [showCalendar, setShowCalendar] = useState(false);
+  
   const navigate = useNavigate();
 
 
@@ -49,6 +49,36 @@ const handleComponentClick = (component) => {
   setSelectedComponent(component   === selectedComponent ? null : component);
 
 };
+
+const [getStudent, setGetStudent] = useState([]);
+
+// useEffect(() => {
+  axios.get('http://localhost:6040/api/students')
+    .then(response => {
+      console.log(response.data);
+      setGetStudent(response.data);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+// }, []);
+
+
+// const [ getStudent, setGetStudent ] = useState()
+
+//   axios.get('http://localhost:6040/api/students')
+//     .then(response => {
+//       console.log(response.data);
+//       getStudent(response.data)
+//     })
+//     .catch(error => {
+//       console.error(error);
+//     });
+
+
+// axios.get('http://localhost:6040/api/students')
+// console.log(allStudents);
+
       
   return (
         <div className="w-[375px] lg:w-[1300px] h-full lg:h-[500px] relative bg-[#faf9f9] lg:bg-[#faf9f9]">
@@ -126,7 +156,7 @@ const handleComponentClick = (component) => {
     <div className="justify-center items-center flex">
         <div className="w-[1000px] justify-between items-center inline-flex">
           <div className="px-3.5 py-[18px] bg-white rounded shadow justify-center items-center gap-16 flex"
-          onClick={() => setShowCalendar(true)}
+          // onClick={() => setShowCalendar(true)}
           >
             <p className="w-[109px] text-[#2c2c2c] text-base font-semibold font-['Inter']">Date Selector</p>
             <FaCaretDown className="text-2xl text-[#cc781d] font-bold"/>
@@ -155,16 +185,8 @@ const handleComponentClick = (component) => {
         </div>
     </div>
 
-        <span>
-          {showCalendar && (
-                <Calendar
-                  value={date}
-                  onChange={setDate}
-                  onClickDay={() => setShowCalendar(false)}
-                />
-              )}
-        </span>
         
+        {selectedComponent === "date" && <Date />}
         {selectedComponent === "course" && <Course />}
         {selectedComponent === "cohort" && <Cohort />}
         {selectedComponent === "bulkaction" && <Bulkaction />}
@@ -173,9 +195,38 @@ const handleComponentClick = (component) => {
         <Bulkaction /> */}
   </div>
 
-  <div className='h-fit w-[700px] bg-black '>
+      {/* <Getattendance/> */}
+      <div className='bg-black w-[1103px] h-fit pl-[30px] pr-[37px] py-5 left-[247px] top-[297px] absolute border-b border-[#e6e6e6] grid grid-cols-5 justify-center gap-[10px]'>
 
-  </div>
+    {getStudent.map((student) => (
+        <div className='text-white font-bold font-[inter] border-1 rounded-md items-center'>
+        <h1>{student.name}</h1>
+        <p>{student.studentNumber}</p>
+        <p>{student.course}</p>
+        <span className='flex flex-row gap-3'>
+            <button className='border-1 rounded-full p-auto w-7 items-center  font-extrabold '
+            id='present-btn'
+            // onClick={handleButtonClick('present')}
+            >
+                Present
+            </button>
+            <button className='border-1 rounded-full p-auto w-7 items-center  font-extrabold '
+            id='absent-btn'
+            // onClick={handleButtonClick('absent')}
+            >
+                Absent
+            </button>
+            <button className='border-1 rounded-full p-auto w-7 items-center  font-extrabold '
+            id='left-btn'
+            // onClick={handleButtonClick('left')}
+            >
+                Left
+            </button>
+        </span>
+        </div>
+    ))}
+
+</div>
 </div>
   )
 }

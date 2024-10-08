@@ -6,6 +6,8 @@ import Attendance from './components/Attendance/Attendance';
 import Register from './components/Register/Register';
 import Studentlist from './components/StudentList/Studentlist';
 import Settings from './components/settings/Settings';
+import Tutorlist from './components/Tutors/Tutorlist';
+import Registertutor from './components/Regtutor/Registertutor';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/studentlist" element={<Studentlist />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/tutorList" element={<Tutorlist />} />
+          <Route path="/registertutor" element={<Registertutor />} />
         </Routes>
       </div>
     </BrowserRouter>

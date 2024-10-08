@@ -3,7 +3,7 @@ import React from 'react'
 
 const Cohort = () => {
   return (
-    <div className="w-[254px] h-[260px] mx-[600px] bg-white rounded-[20px] flex-col justify-start items-start gap-[18px] inline-flex">
+    <div className="w-[254px] h-[260px] mx-[600px] bg-white rounded-[20px] flex-col justify-start items-start gap-[18px] inline-flex z-10">
         <span className="justify-center items-center gap-2.5 inline-flex">
             <p className="w-[174px] text-[#484848] text-base font-semibold font-['Inter']">Cohort 1</p>
         </span>
